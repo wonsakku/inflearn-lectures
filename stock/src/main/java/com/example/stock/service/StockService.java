@@ -5,12 +5,15 @@ import com.example.stock.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @RequiredArgsConstructor
 @Service
 public class StockService {
     private final StockRepository stockRepository;
 
-    public void decrease(Long id, Long decreaseQuantity){
+//    @Transactional
+    public synchronized void decrease(Long id, Long decreaseQuantity){
 
         Stock stock = stockRepository.findById(id).orElseThrow();
 
