@@ -26,12 +26,12 @@ public class _01_JpaMain {
             Member wonsakku = em.find(Member.class, 1L);
 
             System.out.println("findMember.id = " + wonsakku.getId());
-            System.out.println("findMember.name = " + wonsakku.getName());
+            System.out.println("findMember.name = " + wonsakku.getUsername());
 
             // 수정 --> em.persist를 안해도 됨.
             // 기본 생성자 있어야 함??
             // 없으면 나는 에러 : [ org.hibernate.InstantiationException: No default constructor for entity:  : hellojpa.Member ]
-            wonsakku.setName("wonsakku");
+            wonsakku.setUsername("wonsakku");
 
             // 삭제
 //            em.remove(wonsakku);
