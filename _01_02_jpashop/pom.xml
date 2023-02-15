@@ -41,6 +41,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--   jdk 1.8 에서 jdk 11로 변경에 따른 의존성 추가     -->
+        <!--   https://www.inflearn.com/questions/13985/java11-javax-xml-bind-jaxbexception-%EC%97%90%EB%9F%AC     -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
     </dependencies>
 
 
