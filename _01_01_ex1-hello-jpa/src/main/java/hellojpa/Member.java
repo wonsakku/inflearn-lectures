@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Member {
+public class Member  extends BaseEntity {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
