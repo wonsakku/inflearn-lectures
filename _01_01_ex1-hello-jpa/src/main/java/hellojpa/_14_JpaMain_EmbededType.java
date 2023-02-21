@@ -5,11 +5,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class _13_JpaMain {
+public class _14_JpaMain_EmbededType {
 
-    public static void  main(String[] args) {
+    public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em = emf.createEntityManager();
@@ -22,10 +21,8 @@ public class _13_JpaMain {
 
             Member member = new Member();
             member.setUsername("kim0");
-            member.setCreatedBy("kim1");
-            member.setCreatedDate(LocalDateTime.now());
-            member.setModifiedBy("kim2");
-            member.setLastModifiedDate(LocalDateTime.now());
+            member.setHomeAddress(new Address("경기도 성남시", "엄궁북로 62", "12345"));
+//            member.setWorkPeriod(new Period(LocalDateTime.now(), LocalDateTime.now().plusYears(1l)));
 
             em.persist(member);
 

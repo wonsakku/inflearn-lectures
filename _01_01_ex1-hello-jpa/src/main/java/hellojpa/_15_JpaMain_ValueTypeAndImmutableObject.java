@@ -5,11 +5,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDateTime;
-import java.util.List;
 
-public class _13_JpaMain {
+public class _15_JpaMain_ValueTypeAndImmutableObject {
 
-    public static void  main(String[] args) {
+    public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em = emf.createEntityManager();
@@ -19,15 +18,21 @@ public class _13_JpaMain {
         tx.begin();
 
         try {
+            Address address = new Address("경기도 성남시", "엄궁북로 62", "12345");
 
             Member member = new Member();
             member.setUsername("kim0");
-            member.setCreatedBy("kim1");
-            member.setCreatedDate(LocalDateTime.now());
-            member.setModifiedBy("kim2");
-            member.setLastModifiedDate(LocalDateTime.now());
+            member.setHomeAddress(address);
+
+            Member member2 = new Member();
+            member2.setUsername("kim1");
+            member2.setHomeAddress(address);
+            member2.setHomeAddress(new Address(address.getCity(), address.getStreet(), address.getZipcode()));
 
             em.persist(member);
+            em.persist(member2);
+
+            member2.getHomeAddress().setCity("uuuuuuuuuu");
 
 
             tx.commit();
