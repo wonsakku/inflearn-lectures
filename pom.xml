@@ -18,7 +18,7 @@
     <modules>
         <module>_01_01_ex1-hello-jpa</module>
         <module>_01_02_jpashop</module>
-
+        <module>_01_03_jpql</module>
     </modules>
 
 </project>
