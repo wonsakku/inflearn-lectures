@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Entity
+@NamedQuery(name = "Member.findByUsername", query = "SELECT m FROM Member m WHERE m.username = :username")
 public class Member {
 
     @Id @GeneratedValue
@@ -19,7 +20,7 @@ public class Member {
 
     private int age;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
 
