@@ -1,8 +1,9 @@
 package org.inflearn._01_04_jpabook.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "orders")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
     @Id
@@ -24,7 +26,7 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -51,5 +53,44 @@ public class Order {
         this.delivery = delivery;
         this.delivery.setOrder(this);
     }
+
+    // == 생성 메서드 == //
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){
+
+        Order order = new Order();
+
+        order.member = member;
+        order.delivery = delivery;
+        for(OrderItem orderItem : orderItems){
+            order.addOrderItem(orderItem);
+        }
+        order.orderStatus = OrderStatus.ORDER;
+        order.orderDate = LocalDateTime.now();
+
+        return order;
+    }
+
+    // == 비즈니스 로직 == //
+    /**
+     * 주문 취소
+     */
+    public void cancel(){
+        if(this.delivery.getDeliveryStatus() == DeliveryStatus.COMP){
+            throw new IllegalArgumentException("이미 배송완료된 사움은 취소가 불가능합니다.");
+        }
+        this.orderStatus = OrderStatus.CANCEL;
+
+        this.orderItems.forEach(OrderItem::cancel);
+    }
+
+    /**
+     * 전체 주문 가격 조회
+     */
+    public int getTotalPrice(){
+        return this.orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
+    }
+
 
 }
