@@ -9,6 +9,7 @@ import org.inflearn._01_04_jpabook.domain.item.Item;
 import org.inflearn._01_04_jpabook.repository.ItemRepository;
 import org.inflearn._01_04_jpabook.repository.MemberRepository;
 import org.inflearn._01_04_jpabook.repository.OrderRepository;
+import org.inflearn._01_04_jpabook.repository.OrderSearch;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,9 +57,10 @@ public class OrderService {
 
 
     // 검색
-//    public List<Order> findOrders(OrderSearch orderSearch){
+    public List<Order> findOrders(OrderSearch orderSearch){
 //        return orderRepository.findAll(orderSearch);
-//    }
+        return orderRepository.findAllByCriteria(orderSearch);
+    }
 
 }
 
