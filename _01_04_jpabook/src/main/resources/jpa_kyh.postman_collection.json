@@ -147,7 +147,40 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/members",
+					"raw": "http://localhost:8080/api/v2/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06.주문조회_v1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/simple-orders",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -156,7 +189,106 @@
 					"path": [
 						"api",
 						"v1",
-						"members"
+						"simple-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07.주문조회_v2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/simple-orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"simple-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08.주문조회_v3_fetchJoin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v3/simple-orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v3",
+						"simple-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08.주문조회_v4_dto",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v3/simple-orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v3",
+						"simple-orders"
 					]
 				}
 			},
