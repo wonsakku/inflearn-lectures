@@ -163,7 +163,7 @@
 			"response": []
 		},
 		{
-			"name": "06.주문조회_v1",
+			"name": "06.주문심플조회_v1",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -196,7 +196,7 @@
 			"response": []
 		},
 		{
-			"name": "07.주문조회_v2",
+			"name": "07.주문심플조회_v2",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -229,7 +229,7 @@
 			"response": []
 		},
 		{
-			"name": "08.주문조회_v3_fetchJoin",
+			"name": "08.주문심플조회_v3_fetchJoin",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -262,7 +262,7 @@
 			"response": []
 		},
 		{
-			"name": "08.주문조회_v4_dto",
+			"name": "08.주문심플조회_v4_dto",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -279,7 +279,106 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v3/simple-orders",
+					"raw": "http://localhost:8080/api/v4/simple-orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v4",
+						"simple-orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09.주문조회_v1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10.주문조회_v2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v2/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v2",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11.주문조회_v3_fetchJoin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v3/orders",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -288,7 +387,149 @@
 					"path": [
 						"api",
 						"v3",
-						"simple-orders"
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12.주문조회_v3.1_pagination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v3.1/orders?offset=0&limit=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v3.1",
+						"orders"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13.주문조회_v4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v4/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v4",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "14.주문조회_v5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v5/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v5",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15.주문조회_v6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hello jpa!!!!!\",\r\n    \"id\":11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v5/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v5",
+						"orders"
 					]
 				}
 			},
