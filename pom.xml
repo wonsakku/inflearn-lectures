@@ -20,6 +20,7 @@
         <module>_01_02_jpashop</module>
         <module>_01_03_jpql</module>
         <module>_01_04_jpabook</module>
+        <module>_01_05_data-jpa</module>
     </modules>
 
 </project>
