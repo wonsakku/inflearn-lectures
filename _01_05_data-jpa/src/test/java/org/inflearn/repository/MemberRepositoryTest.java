@@ -501,9 +501,125 @@ class MemberRepositoryTest {
         List<Member> memberCustom = memberRepository.findMemberCustom();
     }
 
+    @Test
+    void projections(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        List<UsernameOnly> result = memberRepository.findProjectionsByUsername("m1");
+
+        for (UsernameOnly usernameOnly : result) {
+            System.out.println("usernameOnly = " + usernameOnly);
+        }
+    }
 
 
+    @Test
+    void projectionsDto(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
 
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        List<UsernameOnlyDto> result = memberRepository.findProjectionDtoByUsername("m1");
+
+        for (UsernameOnlyDto usernameOnlyDto : result) {
+            System.out.println("usernameOnlyDto = " + usernameOnlyDto);
+            System.out.println("usernameOnlyDto.username = " + usernameOnlyDto.getUsername());
+            System.out.println("usernameOnlyDto.age = " + usernameOnlyDto.getAge());
+        }
+    }
+
+
+    @Test
+    void projectionsGenericDto(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        List<UsernameOnlyDto> result = memberRepository.findProjectionGenericDtoByUsername("m1", UsernameOnlyDto.class);
+
+        for (UsernameOnlyDto usernameOnlyDto : result) {
+            System.out.println("usernameOnlyDto = " + usernameOnlyDto);
+            System.out.println("usernameOnlyDto.username = " + usernameOnlyDto.getUsername());
+            System.out.println("usernameOnlyDto.age = " + usernameOnlyDto.getAge());
+        }
+    }
+
+
+    @Test
+    void nativeQuery(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+
+        System.out.println("##############################################");
+        Member findMember = memberRepository.findByNativeQuery("m1");
+        System.out.println("native query ==> " + findMember);
+
+        System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        Member byUsername = memberRepository.findMemberByUsername("m1");
+        System.out.println("by username ==> " + byUsername);
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        Optional<Member> byId = memberRepository.findById(m1.getId());
+        System.out.println("by id ==> " + byId);
+
+    }
+
+
+    @Test
+    void nativeProjectionQuery(){
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member("m1", 0, teamA);
+        Member m2 = new Member("m2", 0, teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        Page<MemberProjection> result = memberRepository.findByNativeProjection(PageRequest.of(0, 10));
+        List<MemberProjection> content = result.getContent();
+
+        for (MemberProjection memberProjection : content) {
+            System.out.println("memberProjection.id = " + memberProjection.getId());
+            System.out.println("memberProjection.userNamex = " + memberProjection.getUsername());
+            System.out.println("memberProjection.teamName = " + memberProjection.getTeamName());
+
+        }
+    }
 
 
 }
