@@ -3,19 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>inflearn</artifactId>
         <groupId>org.inflearn</groupId>
+        <artifactId>jpa-kyh</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>_01_01_ex1-hello-jpa</artifactId>
+    <artifactId>_01_02_jpashop</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
 
     <dependencies>
         <!-- JPA 하이버네이트 -->
@@ -48,7 +49,7 @@
             <version>2.3.0</version>
         </dependency>
 
-
     </dependencies>
+
 
 </project>

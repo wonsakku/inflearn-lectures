@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.inflearn</groupId>
-    <artifactId>inflearn</artifactId>
+    <artifactId>jpa-kyh</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
