@@ -18,6 +18,9 @@
     <modules>
         <module>eureka-server</module>
         <module>user-service</module>
+        <module>apigateway-service</module>
+        <module>first-service</module>
+        <module>second-service</module>
     </modules>
 
 </project>
