@@ -22,6 +22,27 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - CustomFilter
+
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+          filters:
+            - CustomFilter
+
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - CustomFilter
+
         - id: first-service
           uri: lb://MY-FIRST-SERVICE
 #          uri: http://localhost:8081/
@@ -44,7 +65,7 @@ spring:
                 baseMessage: Hi, there.
                 preLogger: true
                 postLogger: true
-
 #            - AddRequestHeader=second-request, second-request-header2
 #            - AddResponseHeader=second-response, second-response-header2
+
 

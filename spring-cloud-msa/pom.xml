@@ -17,9 +17,11 @@
 
     <modules>
         <module>eureka-server</module>
+        <module>catalog-service</module>
         <module>user-service</module>
         <module>apigateway-service</module>
         <module>first-service</module>
+        <module>order-service</module>
         <module>second-service</module>
     </modules>
 
