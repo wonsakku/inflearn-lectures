@@ -1,0 +1,6 @@
+encrypt:
+#  key: encrypt-key
+  key-store:
+    location: file:///E:/Wonsik/Programming/study/inflearn/spring-cloud-msa/keystore/apiEncryptionKey.jks
+    password: test1234
+    alias: apiEncryptionKey
