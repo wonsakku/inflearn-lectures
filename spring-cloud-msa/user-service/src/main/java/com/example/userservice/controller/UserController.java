@@ -35,6 +35,7 @@ public class UserController {
                 +"\n, port(server.port) " + env.getProperty("server.port")
                 +"\n, token secret = " + env.getProperty("token.secret")
                 +"\n, token expiration time : " + env.getProperty("token.expiration_time")
+                +"\n, db password : " + env.getProperty("spring.datasource.password")
         );
     }
 
