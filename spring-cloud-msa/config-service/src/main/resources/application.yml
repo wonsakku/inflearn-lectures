@@ -1,0 +1,17 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///E:/Wonsik/Programming/study/inflearn/spring-cloud-msa/git-local-repo
+        git:
+#          uri: file://E:\Wonsik\Programming\study\inflearn\spring-cloud-msa\git-local-repo
+          uri: https://github.com/wonsakku/spring-cloud-config
+
