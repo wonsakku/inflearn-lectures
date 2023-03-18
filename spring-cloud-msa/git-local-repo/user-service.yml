@@ -7,3 +7,10 @@ spring:
     password: "{cipher}AQCPGgBPrZbzw/BwZVUcNIogwJWn508eQOkjN0m/3aB0ap1sO9vbABRftuyILJF7AjJo7G2yfXmfh2G38FY2I6STnccdMgtv0+vJO8sWi2fD/SEkg+R1yNxzDBtIozIFOvfIGm9mf8DngydrRBqX0CVk2OMEZpfO+p/Av7ynRQZkEIwlA3FUC9HOEibJ/L6+1Il24qiuA51+yNii2ZPBfaEhUczodgG4xXLi9tCL2YDaZLternbGMLQDvDGDafx3B3XpZlNeRglCzXCxm3/82Y53PhhA4YL491oxw+PjYWOknyfYS+RUqyhsrJFAWUSRpG+EHnCy4BeiiIaV2n1Z52jH4+wfhW0moDhhSTf4MoM1ucIkjwS7KbumjoAGacw/FkU="
 #    password: "{cipher}c46e9619e12690b14d2cbea3417432a58682cec3dea09ccd6bcaf86f9dbc0b88"  # password: sa
 #    password: "{cipher}d1bf8104bafd778405b67d4a702bc57afdad4724116e6d152c1c369acd539daa"  # password: 12345
+
+order_service:
+#  url: http://127.0.0.1:8000/order-service/%s/orders
+  url: http://order-service/order-service/%s/orders # @LoadBalanced
+  exception:
+    orders_is_empty: "There is no Orders"
+

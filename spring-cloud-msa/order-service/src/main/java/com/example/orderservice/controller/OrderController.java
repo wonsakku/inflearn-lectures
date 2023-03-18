@@ -6,6 +6,7 @@ import com.example.orderservice.service.OrderService;
 import com.example.orderservice.vo.RequestOrder;
 import com.example.orderservice.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/order-service")
@@ -35,6 +37,7 @@ public class OrderController {
     @PostMapping("/{userId}/orders")
     public ResponseEntity createOrder(@PathVariable("userId") String userId,
                                       @RequestBody RequestOrder requestOrder) {
+        log.info("createOrder");
 
         OrderDto orderDto = modelMapper.map(requestOrder, OrderDto.class);
         orderDto.setUserId(userId);
@@ -46,6 +49,7 @@ public class OrderController {
 
     @GetMapping("/{userId}/orders")
     public ResponseEntity getOrders(@PathVariable("userId") String userId) {
+        log.info("getOrders");
         Iterable<OrderEntity> orderList = orderService.getOrdersByUserId(userId);
         List<ResponseOrder> responseOrders = new ArrayList<>();
         orderList.forEach(order -> responseOrders.add(modelMapper.map(order, ResponseOrder.class)));
