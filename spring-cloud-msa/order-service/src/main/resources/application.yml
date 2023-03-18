@@ -8,11 +8,16 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+#      ddl-auto: update
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://192.168.78.130:3306/mydb
+    username: root
+    password: '0000'
 
   h2:
     console:
@@ -26,8 +31,10 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.application.instance_id:${random.value}}
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: false
+    fetch-registry: false
+#    register-with-eureka: true
+#    fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
 
