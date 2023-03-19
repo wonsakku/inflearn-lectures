@@ -1,0 +1,10 @@
+CREATE TABLE orders(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id VARCHAR(20) NOT NULL,
+    qty INT DEFAULT 0,
+    unit_price INT DEFAULT 0,
+    TOTAL_PRICE INT DEFAULT 0,
+    user_id VARCHAR(50) NOT NULL,
+    order_Id VARCHAR(50) NOT NULL,
+    created_at DATETIME DEFAULT NOW()
+);

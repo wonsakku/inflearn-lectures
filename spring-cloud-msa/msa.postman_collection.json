@@ -83,7 +83,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhMDQwOGYxZi02ZTBmLTRlNGYtOGU1OS00MTdiOGYyZWU1ZTAiLCJleHAiOjE2NzkyMDY0NjB9.FyIYgQ5YHvvo8kbIaHhrODPU1t9x9kp0GCs8xtubq1iLjXy8WW3aZ0NX76Zr0b0ELHXbEGlAA32Vi6CIytRsBg",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzMzMwMWZmYi0wMTEzLTRhM2YtOWFjZC0zNGY2M2FiN2Y4N2YiLCJleHAiOjE2NzkyODY1MzJ9.U49yqVFS1afM7gxa914AJMr821uWdAS9CnXooR8at5fYdGBtHoEHKbJwGCtHfTRH8KrzRihmLBXHZETVUKXlIw",
 											"type": "string"
 										}
 									]
@@ -159,7 +159,36 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"productId\":\"CATALOG-0012\",\r\n    \"qty\": 10,\r\n    \"unitPrice\": 2000\r\n}",
+									"raw": "{\r\n    \"productId\":\"CATALOG-002\",\r\n    \"qty\": 16,\r\n    \"unitPrice\": 2000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/order-service/33301ffb-0113-4a3f-9acd-34f63ab7f87f/orders",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"order-service",
+										"33301ffb-0113-4a3f-9acd-34f63ab7f87f",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "주문등록_02",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\":\"CATALOG-001\",\r\n    \"qty\": 5,\r\n    \"unitPrice\": 750\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -182,13 +211,16 @@
 							"response": []
 						},
 						{
-							"name": "주문등록_02",
+							"name": "주문조회",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"productId\":\"CATALOG-001345\",\r\n    \"qty\": 5,\r\n    \"unitPrice\": 750\r\n}",
+									"raw": "{\r\n    \"productId\":\"CATALOG-001\",\r\n    \"qty\": 5,\r\n    \"unitPrice\": 750\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -196,15 +228,44 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:8000/order-service/f13dad59-c2ed-4abe-a993-961289e8954a/orders",
+									"raw": "localhost:8000/order-service/33301ffb-0113-4a3f-9acd-34f63ab7f87f/orders",
 									"host": [
 										"localhost"
 									],
 									"port": "8000",
 									"path": [
 										"order-service",
-										"f13dad59-c2ed-4abe-a993-961289e8954a",
+										"33301ffb-0113-4a3f-9acd-34f63ab7f87f",
 										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "catalog",
+			"item": [
+				{
+					"name": "gateway",
+					"item": [
+						{
+							"name": "카탈로그_목록조회",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/catalog-service/catalogs",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"catalog-service",
+										"catalogs"
 									]
 								}
 							},
@@ -224,7 +285,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"my-source-connect2\",\r\n  \"config\": {\r\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSourceConnector\",\r\n    \"connection.url\": \"jdbc:mysql://localhost:3306/mydb\",\r\n    \"connection.user\": \"root\",\r\n    \"connection.password\": \"0000\",\r\n    \"mode\": \"incrementing\",\r\n    \"incrementing.column.name\": \"id\",\r\n    \"table.whitelist\": \"users\",\r\n    \"topic.prefix\": \"my_topic_\",\r\n    \"tasks.max\": \"1\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"name\": \"my-source-connect\",\r\n  \"config\": {\r\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSourceConnector\",\r\n    \"connection.url\": \"jdbc:mysql://kafka:3306/mydb\",\r\n    \"connection.user\": \"root\",\r\n    \"connection.password\": \"0000\",\r\n    \"mode\": \"incrementing\",\r\n    \"incrementing.column.name\": \"id\",\r\n    \"table.whitelist\": \"users\",\r\n    \"topic.prefix\": \"my_topic_\",\r\n    \"tasks.max\": \"1\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -251,7 +312,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"my-sink-connect\",\r\n  \"config\": {\r\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSinkConnector\",\r\n    \"connection.url\": \"jdbc:mysql://localhost:3306/mydb\",\r\n    \"connection.user\": \"root\",\r\n    \"connection.password\": \"0000\",\r\n    \"auto.create\":\"true\",\r\n    \"auto.evolve\":\"true\",\r\n    \"delete.enabled\":\"false\",\r\n    \"tasks.max\": \"1\",\r\n    \"topics\":\"my_topic_users\"\r\n  }\r\n}",
+							"raw": "{\r\n  \"name\": \"my-order-sink-connect\",\r\n  \"config\": {\r\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSinkConnector\",\r\n    \"connection.url\": \"jdbc:mysql://kafka:3306/mydb\",\r\n    \"connection.user\": \"root\",\r\n    \"connection.password\": \"0000\",\r\n    \"auto.create\":\"true\",\r\n    \"auto.evolve\":\"true\",\r\n    \"delete.enabled\":\"false\",\r\n    \"tasks.max\": \"1\",\r\n    \"topics\":\"orders\"\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -295,14 +356,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{kafka-server}}:8083/connectors/my-source-connect2",
+							"raw": "{{kafka-server}}:8083/connectors/my-order-sink-connect",
 							"host": [
 								"{{kafka-server}}"
 							],
 							"port": "8083",
 							"path": [
 								"connectors",
-								"my-source-connect2"
+								"my-order-sink-connect"
 							]
 						}
 					},
@@ -314,15 +375,34 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{kafka-server}}:8083/connectors/my-source-connect2/status",
+							"raw": "{{kafka-server}}:8083/connectors/my-order-sink-connect/status",
 							"host": [
 								"{{kafka-server}}"
 							],
 							"port": "8083",
 							"path": [
 								"connectors",
-								"my-source-connect2",
+								"my-order-sink-connect",
 								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "kafka_connector_삭제",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{kafka-server}}:8083/connectors/my-sink-connect",
+							"host": [
+								"{{kafka-server}}"
+							],
+							"port": "8083",
+							"path": [
+								"connectors",
+								"my-sink-connect"
 							]
 						}
 					},
