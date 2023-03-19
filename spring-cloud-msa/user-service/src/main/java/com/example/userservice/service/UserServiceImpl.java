@@ -10,6 +10,8 @@ import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,6 +36,7 @@ public class UserServiceImpl implements UserService{
 
     private final Environment env;
     private final OrderServiceClient orderServiceClient;
+    private final CircuitBreakerFactory circuitBreakerFactory;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -83,11 +86,18 @@ public class UserServiceImpl implements UserService{
 //            log.error(e.getMessage());
 //        }
         /** FeignErrorDecoder로 예외처리 */
-        List<ResponseOrder> body = orderServiceClient.getOrders(userId);
-
+//        List<ResponseOrder> body = orderServiceClient.getOrders(userId);
 //        List<ResponseOrder> orders = new ArrayList<>();
-        userDto.setOrders(body);
 
+        /** Circuit Breaker */
+
+        log.info("Before call orders microservice");
+        CircuitBreaker circuitbreaker = circuitBreakerFactory.create("circuitbreaker");
+        List<ResponseOrder> body = circuitbreaker.run(() -> orderServiceClient.getOrders(userId),
+                throwable -> new ArrayList<>());
+        log.info("After called orders microservice");
+
+        userDto.setOrders(body);
 
         return userDto;
     }
