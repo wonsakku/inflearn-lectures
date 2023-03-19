@@ -85,6 +85,15 @@ spring:
           filters:
             - CustomFilter
 
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/actuator/**
+            - Method=POST,GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
+
         - id: first-service
           uri: lb://MY-FIRST-SERVICE
 #          uri: http://localhost:8081/
@@ -115,7 +124,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, httptrace, busrefresh
+        include: refresh, health, beans, httptrace, busrefresh, info, metrics, prometheus
 
 #token:
 #  secret: user_token
