@@ -3,6 +3,8 @@ package com.cors.jwt.config;
 import com.cors.jwt.filter.MyFilter1;
 import com.cors.jwt.filter.MyFilter3;
 import com.cors.jwt.jwt.JwtAuthenticationFilter;
+import com.cors.jwt.jwt.JwtAuthorizationFilter;
+import com.cors.jwt.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,6 +21,7 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CorsFilter corsFilter;
+    private final UserRepository userRepository;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -48,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .httpBasic().disable() // http header에 인증정보(ID, PWD)를 넣어서 요청을 보내는 방식(httpBasic), Bearer 방식은 토큰을 넣어서 요청을 보내는 방식
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), userRepository))
                 .authorizeRequests()
                 .antMatchers("/api/v1/user/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
@@ -56,7 +60,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/admin/**")
                 .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll();
-
-
     }
 }

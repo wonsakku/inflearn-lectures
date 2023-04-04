@@ -1,12 +1,14 @@
 package com.cors.jwt.auth;
 
 import com.cors.jwt.model.User;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Data
 public class PrincipalDetails implements UserDetails {
 
     private User user;
@@ -17,6 +19,7 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         user.getRoleList().forEach(r -> {
             authorities.add(() -> r);
