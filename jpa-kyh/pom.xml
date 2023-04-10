@@ -21,6 +21,7 @@
         <module>_01_03_jpql</module>
         <module>_01_04_jpabook</module>
         <module>_01_05_data-jpa</module>
+        <module>_01_06_querydsl</module>
     </modules>
 
 </project>
