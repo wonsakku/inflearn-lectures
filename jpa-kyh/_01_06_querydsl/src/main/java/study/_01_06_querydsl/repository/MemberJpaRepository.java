@@ -1,27 +1,21 @@
 package study._01_06_querydsl.repository;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 import study._01_06_querydsl.dto.MemberSearchCondition;
 import study._01_06_querydsl.dto.MemberTeamDto;
-import study._01_06_querydsl.dto.QMemberDto;
 import study._01_06_querydsl.dto.QMemberTeamDto;
 import study._01_06_querydsl.entity.Member;
-import study._01_06_querydsl.entity.QMember;
-import study._01_06_querydsl.entity.QTeam;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.util.StringUtils.*;
-import static study._01_06_querydsl.entity.QMember.*;
-import static study._01_06_querydsl.entity.QTeam.*;
+import static org.springframework.util.StringUtils.hasText;
+import static study._01_06_querydsl.entity.QMember.member;
+import static study._01_06_querydsl.entity.QTeam.team;
 
 @Repository
 public class MemberJpaRepository {
@@ -139,6 +133,8 @@ public class MemberJpaRepository {
     private BooleanExpression ageLoe(Integer ageLoe) {
         return ageLoe != null ? member.age.loe(ageLoe) : null;
     }
+
+
 }
 
 
